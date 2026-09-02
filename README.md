@@ -8,16 +8,6 @@ final risk score locally. See `../docs/requirements.md`, `../docs/design.md`, `.
 - min SDK 26, target SDK 34, Kotlin + Jetpack Compose (Material 3)
 - API mode: **mock-first** (`BuildConfig.USE_MOCK_API = true`) until the shared backend is ready.
 
-## What is implemented
-
-This repository now contains a native Android app in `app/`.
-
-- **SMS, text and email:** extracts every link and checks it against the live [URLhaus community API](https://urlhaus.abuse.ch/api/). A message without a URL is explicitly reported as inconclusive rather than given a made-up AI score.
-- **URL and QR payloads:** live URLhaus reputation lookup; the target is never opened by the app.
-- **Images and videos:** the app uploads only a user-selected file to an explicitly configured HTTPS analysis backend. This keeps model credentials and large deepfake models out of users' phones.
-
-For semantic phishing classification and deepfake inference, set **Analysis backend URL** in the app settings. It must expose `POST /v1/analyze/text` with JSON `{ "type", "content" }` and `POST /v1/analyze/media` as multipart (`file`, `type`). Return `{ "verdict": "safe|suspicious|malicious|inconclusive", "summary": "...", "confidence": 0.0 }`.
-
 ## Prerequisites
 
 - **JDK 17** (Android Studio bundles a compatible JBR)
