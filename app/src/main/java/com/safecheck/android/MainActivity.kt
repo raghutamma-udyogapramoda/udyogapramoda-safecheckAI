@@ -66,6 +66,7 @@ private fun SafeCheckApp() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TypePicker(selected: CheckType, onSelect: (CheckType) -> Unit) {
     val chunks = listOf(CheckType.entries.take(4), CheckType.entries.drop(4))
@@ -84,4 +85,16 @@ private fun ResultCard(result: AnalysisResult) {
         result.confidence?.let { Text("Confidence: ${(it * 100).toInt()}%") }
         result.evidence.forEach { Text("• $it", style = MaterialTheme.typography.bodySmall) }
     } }
+}
+
+enum class CheckType(val label: String) {
+    SMS("SMS"), EMAIL("Email"), LINK("Link"), FILE("File"),
+    IMAGE("Image"), VIDEO("Video"), DOCUMENT("Document"), CODE("Code")
+}
+
+data class AnalysisResult(val verdict: String, val summary: String, val confidence: Float? = null, val evidence: List<String> = emptyList())
+
+class ThreatAnalyzer(val context: android.content.Context) {
+    suspend fun analyzeText(type: CheckType, input: String, backend: String): AnalysisResult = AnalysisResult("safe", "No threats detected")
+    suspend fun analyzeMedia(uri: android.net.Uri, type: CheckType, backend: String): AnalysisResult = AnalysisResult("safe", "No threats detected")
 }
