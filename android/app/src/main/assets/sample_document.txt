@@ -1,0 +1,20 @@
+STATE BANK — KYC VERIFICATION NOTICE
+
+Dear Customer,
+
+Our records show that your account KYC is INCOMPLETE. As per RBI guidelines your
+account will be BLOCKED within 24 hours if verification is not completed.
+
+To keep your account active, complete verification and pay a one-time verification
+fee of Rs. 499 using the secure link below:
+
+    http://sbi-kyc-update.xyz/verify
+
+After payment, your account will be reactivated immediately. Failure to act before
+the deadline will result in permanent suspension of banking services.
+
+For assistance call our helpline listed in the link above.
+
+Regards,
+KYC Compliance Team
+State Bank

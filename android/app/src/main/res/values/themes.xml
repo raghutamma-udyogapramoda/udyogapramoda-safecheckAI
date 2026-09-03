@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Base window theme applied before Compose loads. The real SafeCheck brand
+      colors/typography live in Compose (ui/theme). This project uses Compose
+      Material 3 (androidx.compose.material3), which does NOT provide XML
+      Theme.Material3.* styles (those come from com.google.android.material,
+      which this project intentionally does not depend on).
+
+      MainActivity extends ComponentActivity, so it does not require an AppCompat
+      or Material XML theme. We therefore use a platform NoActionBar theme, which
+      is always available with no extra dependency.
+    -->
+    <style name="Theme.SafeCheck" parent="@android:style/Theme.Material.Light.NoActionBar" />
+</resources>

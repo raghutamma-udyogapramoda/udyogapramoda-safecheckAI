@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SafeCheck brand seed colors (mirrored in Compose ui/theme, Phase 1). -->
+    <color name="safecheck_navy">#1F3A93</color>
+    <color name="safecheck_navy_dark">#16295F</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="ic_launcher_background">#1F3A93</color>
+</resources>
