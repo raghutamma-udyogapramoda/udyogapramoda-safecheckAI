@@ -1,29 +1,12 @@
-﻿# Gradle and build files
-.gradle/
-build/
+﻿*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
 **/build/
 **/intermediates/
-**/kspCaches/
-**/.gradle/
-
-# Local configuration and API secrets (NEVER COMMIT)
-local.properties
-**/local.properties
-*.key
-*.keystore
-*.jks
-
-# IDE and Editor files
-.idea/
-*.iml
-.vscode/
-
-# Build artifacts
-*.apk
-*.ap_
-*.aab
-*.dex
-
-# OS temporary files
-Thumbs.db
-.DS_Store
