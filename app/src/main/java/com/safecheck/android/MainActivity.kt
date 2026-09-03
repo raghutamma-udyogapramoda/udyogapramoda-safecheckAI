@@ -2,6 +2,7 @@ package com.safecheck.android
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
@@ -42,10 +43,10 @@ private fun SafeCheckApp() {
                 Text("Check a suspicious message, link, image, or video", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 TypePicker(selected) { selected = it; result = null; selectedMedia = null }
                 if (selected == CheckType.IMAGE || selected == CheckType.VIDEO) {
-                    OutlinedButton(onClick = { picker.launch(if (selected == CheckType.IMAGE) "image/*" else "video/*") }) { Text(if (selectedMedia == null) "Choose ${selected.label.lowercase()}" else "Media selected") }
+                    OutlinedButton(onClick = { picker.launch(if (selected == CheckType.IMAGE) "image/*" else "video/*") }) { Text(if (selectedMedia == null) "Choose ${selected.label.lowercase()}" else "Change ${selected.label.lowercase()}") }
                     Text("Media is uploaded only after you tap Analyze.", style = MaterialTheme.typography.bodySmall)
                 } else {
-                    OutlinedTextField(value = input, onValueChange = { input = it }, modifier = Modifier.fillMaxWidth().heightIn(min = 150.dp), label = { Text("Paste ${selected.label.lowercase()} content") }, placeholder = { Text(if (selected == CheckType.URL) "https://example.com" else "Paste the message or email here") })
+                    OutlinedTextField(value = input, onValueChange = { input = it }, modifier = Modifier.fillMaxWidth().heightIn(min = 150.dp), label = { Text("Paste ${selected.label.lowercase()} here") })
                 }
                 Button(enabled = !busy && ((selectedMedia != null) || input.isNotBlank()), modifier = Modifier.fillMaxWidth(), onClick = {
                     busy = true; result = null
@@ -61,7 +62,7 @@ private fun SafeCheckApp() {
                 Text("SafeCheck never opens submitted links. A clean reputation lookup is not a guarantee of safety.", style = MaterialTheme.typography.bodySmall)
             }
         }
-        if (showSettings) AlertDialog(onDismissRequest = { showSettings = false }, title = { Text("Analysis backend") }, text = { Column { Text("Optional HTTPS endpoint for message classification and deepfake media detection."); OutlinedTextField(value = backend, onValueChange = { backend = it }, label = { Text("https://your-server.example") }, modifier = Modifier.fillMaxWidth()) } }, confirmButton = { TextButton(onClick = { prefs.edit().putString("backend", backend.trim()).apply(); showSettings = false }) { Text("Save") } }, dismissButton = { TextButton(onClick = { showSettings = false }) { Text("Cancel") } })
+        if (showSettings) AlertDialog(onDismissRequest = { showSettings = false }, title = { Text("Analysis backend") }, text = { Column { Text("Optional HTTPS endpoint for message classification") } }, confirmButton = { TextButton(onClick = { showSettings = false }) { Text("Close") } })
     }
 }
 
